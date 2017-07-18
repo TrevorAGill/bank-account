@@ -1,51 +1,48 @@
-//Frontend
+var globalBalance = 0;
 $(document).ready(function(){
   $("form#account").submit(function(event) {
     event.preventDefault();
     var inputtedNames = $("input#names").val();
     var inputtedInitial = parseInt($("input#initial").val());
 
-    var inputtedNames = "";
-    var inputtedInitial = 0;
-
 
     var account = new Account(inputtedNames, inputtedInitial);
 
     function Account(name, initial) {
       this.names = names;
-      this.initial= initial;
+      this.initial = initial;
+      return this.initial;
     }
 
-
-    Account.prototype.names = function() {
-
-      }
-
-    Account.prototype.initial = function() {
-
-        }
+    $(".result").text("Balance: $" +  account.initial);
+    globalBalance = globalBalance + account.initial;
+    alert(globalBalance);
     });
 
 $("form#transactions").submit(function(event) {
   event.preventDefault();
+
   var inputtedDeposit = parseInt($("input#deposit").val());
   var inputtedWithdrawal = parseInt($("input#withdrawal").val());
 
   var inputtedDeposit = 0;
   var inputtedWithdrawal = 0;
-  var balance = 0;
+  var inputtedInitial = 0;
 
 
-  var transactions = new Transactions(inputtedDeposit, inputtedWithdrawal)
 
-  function Transactions(deposit, withdrawal, balance) {
-    this.names = names;
+  var transactions = new Transactions(inputtedDeposit, inputtedWithdrawal, inputtedInitial)
+
+  $(".result2").text("Balance: $" + Account);
+  function Transactions(deposit, withdrawal, initial, balance) {
+    this.deposit = deposit;
+    this.withdrawal= withdrawal;
     this.initial= initial;
     this.balance= balance;
   }
 
     Transactions.prototype.deposit = function() {
-
+      
     }
 
     Transactions.prototype.withdrawal = function() {
